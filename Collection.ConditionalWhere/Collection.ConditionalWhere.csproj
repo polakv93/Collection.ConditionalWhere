@@ -4,7 +4,11 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <NeutralLanguage>en</NeutralLanguage>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageProjectUrl>https://github.com/POLAK93/Collection.ConditionalWhere</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/polakv93/Collection.ConditionalWhere</PackageProjectUrl>
+    <Authors>polakv93</Authors>
+    <RepositoryUrl>https://github.com/polakv93/Collection.ConditionalWhere</RepositoryUrl>
+    <Description />
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
 </Project>
