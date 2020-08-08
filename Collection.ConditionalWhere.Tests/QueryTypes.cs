@@ -19,6 +19,31 @@ namespace Collection.ConditionalWhere.Tests
             res.First().Id.Should().Be(2);
         }
 
+        [Fact]
+        public void Applied_on_list()
+        {
+            var query = CreateQuery();
+            var value = new List<int> { 2 };
+
+            var res = query.ConditionalWhere(value, q => value.Contains(q.Id));
+
+            res.Should().HaveCount(1);
+            res.First().Id.Should().Be(2);
+        }
+
+        [Fact]
+        public void Applied_on_enumerable()
+        {
+            var query = CreateQuery();
+            IEnumerable<int> value = new List<int> { 2 };
+
+            var res = query.ConditionalWhere(value, q => value.Contains(q.Id));
+
+            res.Should().HaveCount(1);
+            res.First().Id.Should().Be(2);
+
+        }
+
         private static IQueryable<QueryItem> CreateQuery()
         {
             var query = new List<QueryItem>
