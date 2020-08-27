@@ -32,6 +32,50 @@ namespace Collection.ConditionalWhere.Tests
         }
 
         [Fact]
+        public void Not_applied_on_empty_list()
+        {
+            var query = CreateQuery();
+            var value = new List<int>();
+
+            var res = query.ConditionalWhere(value, q => q.Bool);
+
+            res.Should().HaveCount(2);
+        }
+
+        [Fact]
+        public void Not_applied_on_empty_ilist()
+        {
+            var query = CreateQuery();
+            IList<int> value = new List<int>();
+
+            var res = query.ConditionalWhere(value, q => q.Bool);
+
+            res.Should().HaveCount(2);
+        }
+
+        [Fact]
+        public void Not_applied_on_empty_array()
+        {
+            var query = CreateQuery();
+            var value = new List<int>().ToArray();
+
+            var res = query.ConditionalWhere(value, q => q.Bool);
+
+            res.Should().HaveCount(2);
+        }
+
+        [Fact]
+        public void Not_applied_on_empty_enumerable()
+        {
+            var query = CreateQuery();
+            var value = new List<int>().AsEnumerable();
+
+            var res = query.ConditionalWhere(value, q => q.Bool);
+
+            res.Should().HaveCount(2);
+        }
+
+        [Fact]
         public void Applied_on_enumerable()
         {
             var query = CreateQuery();
