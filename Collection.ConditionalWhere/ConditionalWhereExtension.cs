@@ -11,11 +11,20 @@ namespace Collection.ConditionalWhere
             => !string.IsNullOrWhiteSpace(value) ? query.Where(predicate) : query;
 
         public static IQueryable<T> ConditionalWhere<T, TK>(this IQueryable<T> query, TK value, Expression<Func<T, bool>> predicate)
-            => EqualityComparer<TK>.Default.Equals(value, default(TK))
+            => EqualityComparer<TK>.Default.Equals(value, default)
                 ? query
                 : query.Where(predicate);
 
         public static IQueryable<T> ConditionalWhere<T, TK>(this IQueryable<T> query, IEnumerable<TK> value, Expression<Func<T, bool>> predicate)
+            => value != null && value.Any() ? query.Where(predicate) : query;
+
+        public static IQueryable<T> ConditionalWhere<T, TK>(this IQueryable<T> query, List<TK> value, Expression<Func<T, bool>> predicate)
+            => value != null && value.Any() ? query.Where(predicate) : query;
+
+        public static IQueryable<T> ConditionalWhere<T, TK>(this IQueryable<T> query, TK[] value, Expression<Func<T, bool>> predicate)
+            => value != null && value.Any() ? query.Where(predicate) : query;
+
+        public static IQueryable<T> ConditionalWhere<T, TK>(this IQueryable<T> query, IList<TK> value, Expression<Func<T, bool>> predicate)
             => value != null && value.Any() ? query.Where(predicate) : query;
     }
 }
